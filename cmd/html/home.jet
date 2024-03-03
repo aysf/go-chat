@@ -8,4 +8,16 @@
 <body>
     <h1>This is the homepage</h1>
 </body>
+
+<script>
+    let socket = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        socket = new WebSocket("ws://127.0.0.1:4000/ws");
+
+        socket.onopen = () => {
+            console.log("succefully connected!!");
+        }
+    })
+</script>
 </html>
