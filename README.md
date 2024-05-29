@@ -7,3 +7,6 @@ run
 ```
 go run cmd/web/*.go
 ```
+
+## Library / Package
+- reconnecting feature -> https://github.com/joewalnes/reconnecting-websocket
