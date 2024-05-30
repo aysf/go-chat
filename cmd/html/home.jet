@@ -152,6 +152,7 @@
 
     })
 
+    // emptyCheck
     function emptyCheck() {
         if ((userField.value === "") || (messageField === "")) {
                 errorMessage("fill out user field and message");
