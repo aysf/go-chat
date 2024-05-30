@@ -74,6 +74,14 @@
         socket.send(JSON.stringify(jsonData));
     }
 
+    isEmpty = function() {
+        if ((userField.value === "") || (messageField.value === "")) {
+                errorMessage("fill out user field and message");
+                return true
+            }
+        return false
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
         socket = new ReconnectingWebSocket("ws://127.0.0.1:4000/ws", null, {debug: true, reconnectInterval: 3000});
 
@@ -134,8 +142,8 @@
                     console.log("no connection");
                     return false
                 }
-                cc = emptyCheck()
-                if cc === false {
+                console.log("get el by id 1 " + isEmpty())
+                if (!isEmpty()) {
                     sendMessage();
                 }
                 event.preventDefault();
@@ -144,22 +152,18 @@
         })
 
         document.getElementById("sendBtn").addEventListener("click", function() {
-        cc = emptyCheck()
-                if cc === false {
-                    sendMessage();
-                }
+            
+            console.log("get el by id 2 " + isEmpty())
+
+            if (!isEmpty()) {
+                sendMessage();
+            }
+
         })
 
     })
 
     // emptyCheck
-    function emptyCheck() {
-        if ((userField.value === "") || (messageField === "")) {
-                errorMessage("fill out user field and message");
-                return false
-            }
-        return true
-    }
 
     function sendMessage() {
         let jsonData = {};
